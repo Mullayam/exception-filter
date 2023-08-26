@@ -1,14 +1,20 @@
+import exp from "node:constants";
+
 export interface sysInfo {
     node: NodeJS.ProcessVersions;
     uptime: number;
-    title: string;
+    command_executed: string;    
+    pid: number;
+    features:any;   
+    homeDirectory: string;
+}  
+export interface osInfo{
     platform: NodeJS.Platform;
     arch: NodeJS.Architecture;
     hostname: string;
-    pid: number;
-    features:  any;
-    homeDirectory: string;
-}  
+    machine: any;
+    version: any;
+}
 export interface HttpStatusName {
     OK: number;
     CREATED: number;

@@ -3,23 +3,22 @@ import process from 'node:process'
 import os from 'node:os'
 import * as fs from 'fs'
 import path from 'node:path'
-import { sysInfo } from './types'
+import { osInfo, sysInfo } from './types'
 
 export namespace Info {
+
     export class System {
+        private cpus: os.CpuInfo[] = os.cpus()
         /**
          * Retrieves system information.
          *
          * @return {sysInfo} An object containing various system information.
          */
-        sys() :sysInfo{
+        sys(): sysInfo {
             return {
                 node: process.versions,
                 uptime: os.uptime(),
-                title: process.title,
-                platform: process.platform,
-                arch: process.arch,
-                hostname: os.hostname(),
+                command_executed: process.title,
                 pid: process.pid,
                 features: process.features,
                 homeDirectory: os.homedir()
@@ -27,15 +26,21 @@ export namespace Info {
         }
         cpu() {
             return {
-                cores: os.cpus.length,
-                // speed: os.cpus.reduce(function sum(memo, cpu) {
-                //   return memo + cpu.speed;
-                // }, 0) / cpus.length,
-                // model: cpus[0].model
+                cores: this.cpus.length,
+                speed: this.cpus.reduce(function sum(memo, cpu) {
+                    return memo + cpu.speed;
+                }, 0) / this.cpus.length,
+                model: this.cpus[0].model
             }
         }
-        os() {
-
+        os(): osInfo{
+            return {
+                platform: process.platform,
+                arch: process.arch,
+                hostname: os.hostname(),
+                machine: os.machine(),
+                version: os.version(),
+            }
         }
         memory() {
             return {

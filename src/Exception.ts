@@ -6,6 +6,9 @@ import { HttpExceptionParams, HttpStatusCodes } from "./types";
 export namespace Exception {
     export class HttpException {
         constructor({ name, message, stack }: HttpExceptionParams) {
+            if (!name) {
+                name = "SEE_OTHER"
+            }
             this.ThrowNewException({ name, message, stack })
         }
 
@@ -31,7 +34,6 @@ export namespace Exception {
         */
         static ExceptionHandler(err: Error, req: Request, res: Response, next: NextFunction) {
             const errStatus = this.prototype.TypeOfError(err.name as keyof HttpStatusCodes);
-
             const errMsg = err.message || 'Something went wrong';
             res.status(errStatus).send({
                 success: false,
