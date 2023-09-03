@@ -1,2 +1,3 @@
-export { Exception } from './src/Exception';
-export { Info } from './src/sysInfo';
+export * from './src/types.js';
+export { Info } from './src/sysInfo.js';
+export { Exception } from './src/Exception.js';

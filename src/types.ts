@@ -1,5 +1,3 @@
-import exp from "node:constants";
-
 export interface sysInfo {
     node: NodeJS.ProcessVersions;
     uptime: number;

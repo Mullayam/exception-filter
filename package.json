@@ -1,14 +1,14 @@
 {
   "name": "@enjoys/exception",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.js",  
   "exports": {
     "import": {
-      "default": "./build/esm/index.js",
+      "default": "./dist/esm/index.js",
       "types": "./dist/index.d.ts"
     },
     "require": {
-      "default": "./build/cjs/index.js",
+      "default": "./dist/cjs/index.js",
       "types": "./dist/index.d.ts"
     }
   },

@@ -1,9 +1,8 @@
-
 import process from 'node:process'
 import os from 'node:os'
 import * as fs from 'fs'
 import path from 'node:path'
-import { osInfo, sysInfo } from './types'
+import { osInfo, sysInfo } from './types.js'
 
 export namespace Info {
 

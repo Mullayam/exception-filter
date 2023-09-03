@@ -1,7 +1,5 @@
-/// <reference path="./sysInfo.ts" />
-
 import { NextFunction, Response } from "express";
-import { HttpExceptionParams, HttpStatusCodes } from "./types";
+import { HttpExceptionParams, HttpStatusCodes } from "./types.js";
 
 export namespace Exception {
     export class HttpException {
@@ -90,9 +88,14 @@ export namespace Exception {
             return ExceptionObject[name]
         }
     }
-    export class ServerException extends Exception.HttpException {
+    export class UnAuthorizedException extends Exception.HttpException {
         constructor({ name, message, stack }: Partial<HttpExceptionParams>) {
             super({ name:"UNAUTHORIZED", message:"Not Authorized", stack })
+        }
+    }
+    export class BadGatewayException extends Exception.HttpException {
+        constructor({ name, message, stack }: Partial<HttpExceptionParams>) {
+            super({ name:"BAD_GATEWAY", message:"Bad Gateway", stack })
         }
     }
 
