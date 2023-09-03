@@ -11,18 +11,38 @@
       "default": "./dist/cjs/index.js",
       "types": "./dist/index.d.ts"
     }
-  },
-  "scripts": {
-    "start": "tsc && node ./app.js"
-  },
-  "keywords": [],
-  "author": "",
+  },   
+  "keywords":[
+    "Express.js",
+    "Exception handler",
+    "Error handling",
+    "Middleware",
+    "Custom error handling",
+    "Error responses",
+    "Error types",
+    "Status codes",
+    "Try-catch",
+    "Middleware stack",
+    "Error middleware",
+    "Express.js middleware",
+    "Express.js error handling",
+    "Express.js middleware package",
+    "Express.js error handling package",
+    "Express.js exception handling",
+    "Express.js error handling best practices"
+  ],
+  "author": "ENJOYS",
   "license": "ISC",
-  "description": "",
+  "description": "Enhance your Express.js applications with our Exception Handler package, a robust middleware solution for effective error management. Seamlessly handle various error types, from validation errors to server crashes, ensuring graceful responses to clients. Customize error messages and status codes, maintain clean code using try-catch blocks, and effortlessly integrate error-handling middleware into your Express.js stack. With our package, you'll follow best practices for error handling, maintain code consistency, and provide clear feedback to clients, improving the reliability and professionalism of your Express.js applications. Elevate your error management game with our Exception Handler package today",
+  "homepage": "https://github.com/Mullayam/exception-filter",
+  "bugs": {
+    "url": "https://github.com/Mullayam/exception-filter/issues"
+  },
   "devDependencies": {
     "@types/node": "^20.5.6"
   },
   "dependencies": {
     "@types/express": "^4.17.17"
   }
+
 }
