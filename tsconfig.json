@@ -20,5 +20,5 @@
   },
   "compileOnSave": false,
   "exclude": ["node_modules", "dist"],
-  "include": ["src","indexd.ts"]
+  "include": ["src","index.ts"]
 }
