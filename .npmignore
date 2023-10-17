@@ -1,0 +1,5 @@
+src
+.gitgignore
+node_modules
+tsconfig-cjs.json
+tsconfig-esm.json

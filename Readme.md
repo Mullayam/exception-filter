@@ -8,7 +8,6 @@ Express.js Exception Filter/Handler
   
 
 Overview
-
 --------
 
   
@@ -18,7 +17,6 @@ The Express.js Exception Handler is a middleware package designed to streamline 
   
 
 Features
-
 --------
 
   
@@ -83,5 +81,5 @@ License
 ------- 
 
 This project is licensed under the MIT License 
-If you have any questions or need assistance, feel free to contact us at <email@example.com>.
+If you have any questions or need assistance, feel free to contact us at <hello@enjoys.in>.
 Feel free to adapt this template to your specific project, including adding actual links, installation steps, and contact information.
