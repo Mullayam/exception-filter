@@ -2,8 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import { HttpExceptionParams, HttpStatusCodes } from "./types.js";
 
 export namespace Exception {
-    export class HttpException {
+    export class HttpException extends Error {
         constructor({ name, message, stack }: HttpExceptionParams) {
+            super(message);
             if (!name) {
                 name = "SEE_OTHER"
             }
@@ -31,15 +32,21 @@ export namespace Exception {
         * @param {NextFunction} next : The next middleware function in the chain.
         */
         static ExceptionHandler(err: Error, req: Request, res: Response, next: NextFunction) {
-            const errStatus = this.prototype.TypeOfError(err.name as keyof HttpStatusCodes);
+            if (err instanceof Error) {
+                err.name = err.name                 
+            }
+             console.log(err.stack)
+            const errStatus = this.prototype.TypeOfError(err.name as keyof HttpStatusCodes) | 500;
             const errMsg = err.message || 'Something went wrong';
-            res.status(errStatus).send({
-                success: false,
-                status: errStatus,
-                type: err.name.replace(/_/g, " "),
-                message: err.message,
-                stack: process.env.NODE_ENV === 'development' ? err.stack : {}
-            })
+            res
+                .status(500)
+                .json({
+                    success: false,
+                    status: errStatus,
+                    type: err.name.replace(/_/g, " "),
+                    message: err.message,
+                    stack: err.stack
+                })
             next(errMsg)
         }
         private ExceptionsArray() {
@@ -90,12 +97,12 @@ export namespace Exception {
     }
     export class UnAuthorizedException extends Exception.HttpException {
         constructor({ name, message, stack }: Partial<HttpExceptionParams>) {
-            super({ name:"UNAUTHORIZED", message:"Not Authorized", stack })
+            super({ name: "UNAUTHORIZED", message: "Not Authorized", stack })
         }
     }
     export class BadGatewayException extends Exception.HttpException {
         constructor({ name, message, stack }: Partial<HttpExceptionParams>) {
-            super({ name:"BAD_GATEWAY", message:"Bad Gateway", stack })
+            super({ name: "BAD_GATEWAY", message: "Bad Gateway", stack })
         }
     }
 
