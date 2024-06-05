@@ -131,7 +131,7 @@ export class HttpException extends Error {
  * object containing information about the forbidden resource.
  */
 function UnhandledRoutes(req: Request, res: Response, next: NextFunction) {
-    throw new HttpException({ name: "FORBIDDEN", message: "Access Denied", stack: { info: "Forbidden Resource", path: req.baseUrl } })
+    throw new HttpException({ name: "FORBIDDEN", message: "Access Denied", stack: { info: "Forbidden Resource", path: req.baseUrl.replace(/\/{2,}/g, '/') } })
 }
 /**
  * Handles exceptions by setting the HTTP status code, sending a JSON response with error details, and calling the next middleware function.
